@@ -11,7 +11,7 @@ export const [FTName] = (props: [FTName]Props) => {
   const {t} = useTranslation()
   return (
     <div className={classNames(cls.[FTName], {}, [className])}>
-
+      [FTName]
     </div>
   );
 };
