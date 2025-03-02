@@ -1,0 +1,31 @@
+.ArticleDetails {
+  width: 100%;
+}
+
+.avatar {
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 20px;
+}
+
+.skeleton {
+  margin-top: 20px;
+}
+
+.articleInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.block {
+  margin-bottom: 16px;
+}
