@@ -36,6 +36,5 @@ export const articleDetailsSlice = createSlice({
     },
 });
 
-// Action creators are generated for each case reducer function
 export const { actions: articleDetailsActions } = articleDetailsSlice;
 export const { reducer: articleDetailsReducer } = articleDetailsSlice;
