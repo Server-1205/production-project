@@ -2,7 +2,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Article/Comment';
 import {
@@ -19,6 +19,8 @@ import { addCommentFormActions } from 'features/AddCommentForm/model/slice/addCo
 import { sendCommentForArticle }
     from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 import { text } from 'stream/consumers';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import {
     getArticleCommensError,
     getArticleCommentsIsLoading,
@@ -45,6 +47,10 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     const articleCommentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const articleCommentsError = useSelector(getArticleCommensError);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     const onSendComment = useCallback((text: string) => {
         dispatch(sendCommentForArticle(text));
@@ -52,7 +58,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
-    });
+    }, []);
 
     if (!id) {
         return (
@@ -64,6 +70,9 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+                <Button onClick={onBackToList} theme={ButtonTheme.OUTLINE}>
+                    {t('Назад к списку')}
+                </Button>
                 <ArticleDetails id={id} />
                 <Text className={cls.commentTitle} title={t('Комментарии')} />
                 <AddCommentForm onSendComment={onSendComment} />
