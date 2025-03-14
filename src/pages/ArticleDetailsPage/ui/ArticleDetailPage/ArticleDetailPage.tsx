@@ -21,6 +21,7 @@ import { sendCommentForArticle }
 import { text } from 'stream/consumers';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import {
     getArticleCommensError,
     getArticleCommentsIsLoading,
@@ -69,7 +70,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     }
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames(cls.ArticleDetailPage, {}, [className])}>
+            <Page className={classNames(cls.ArticleDetailPage, {}, [className])}>
                 <Button onClick={onBackToList} theme={ButtonTheme.OUTLINE}>
                     {t('Назад к списку')}
                 </Button>
@@ -80,7 +81,7 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
                     isLoading={articleCommentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
