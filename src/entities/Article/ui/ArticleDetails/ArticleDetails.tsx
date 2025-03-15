@@ -43,11 +43,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
         case ArticleBlockType.CODE:
-            return <ArticleCodeBlockComponent block={block} className={cls.block} />;
+            return <ArticleCodeBlockComponent key={block.id} block={block} className={cls.block} />;
         case ArticleBlockType.IMAGE:
-            return <ArticleImageBlockComponent block={block} className={cls.block} />;
+            return <ArticleImageBlockComponent key={block.id} block={block} className={cls.block} />;
         case ArticleBlockType.TEXT:
-            return <ArticleTextBlockComponent className={cls.block} block={block} />;
+            return <ArticleTextBlockComponent key={block.id} className={cls.block} block={block} />;
         default:
             return null;
         }
@@ -85,12 +85,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 <Text size={TextSize.L} className={cls.title} title={article?.title} text={article?.subtitle} />
 
                 <div className={cls.articleInfo}>
-                    <Icon Svg={<EyeIcon />} />
+                    <Icon Svg={EyeIcon} />
                     <Text text={String(article?.views)} />
                 </div>
 
                 <div className={cls.articleInfo}>
-                    <Icon Svg={<CalendarIcon />} />
+                    <Icon Svg={CalendarIcon} />
                     <Text text={article?.createdAt} />
                 </div>
 

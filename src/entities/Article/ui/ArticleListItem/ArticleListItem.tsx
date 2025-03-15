@@ -35,7 +35,7 @@ export const ArticleListItem = (props: ArticleListItemProps) => {
     const views = (
         <>
             <Text text={String(article.views)} className={cls.views} />
-            <Icon Svg={<EyeIcon />} />
+            <Icon Svg={EyeIcon} />
         </>
 
     );

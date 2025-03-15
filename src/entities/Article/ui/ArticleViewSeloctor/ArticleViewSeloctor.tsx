@@ -15,11 +15,11 @@ interface ArticleViewSeloctorProps {
 const viweTypes = [
     {
         view: ArticleView.SMALL,
-        icon: <TiledIcon />,
+        icon: TiledIcon,
     },
     {
         view: ArticleView.BIG,
-        icon: <ListIcon />,
+        icon: ListIcon,
     },
 ];
 
@@ -33,7 +33,7 @@ export const ArticleViewSeloctor = (props: ArticleViewSeloctorProps) => {
     return (
         <div className={classNames(cls.ArticleViewSeloctor, {}, [className])}>
             {viweTypes.map((viweType) => (
-                <Button onClick={onClick(viweType.view)} theme={ButtonTheme.CLEAR}>
+                <Button key={viweType.view} onClick={onClick(viweType.view)} theme={ButtonTheme.CLEAR}>
                     <Icon Svg={viweType.icon} />
                 </Button>
             ))}
