@@ -1,4 +1,4 @@
-﻿import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Comments } from 'entities/Article/Comment/model/types/comments';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Text } from 'shared/ui/Text/Text';
@@ -20,7 +20,7 @@ export const CommentCard = (props: CommentCardProps) => {
         return (
             <div className={classNames(cls.CommentCard, {})}>
                 <div className={cls.header}>
-                    <Skeleton height={30} width={30} border="50%" />
+                    <Skeleton height={30} width={30} border='50%' />
                     <Skeleton
                         className={cls.username}
                         width={100}

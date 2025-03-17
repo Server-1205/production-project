@@ -1,9 +1,9 @@
-﻿import { User } from 'entities/User';
+import { User } from 'entities/User';
 
 export enum ArticleBlockType {
     CODE = 'CODE',
     IMAGE = 'IMAGE',
-    TEXT = 'TEXT'
+    TEXT = 'TEXT',
 }
 
 export interface ArticleBlockBase {
@@ -12,33 +12,36 @@ export interface ArticleBlockBase {
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-    type: ArticleBlockType.TEXT,
-    paragraphs: string[]
+    type: ArticleBlockType.TEXT;
+    paragraphs: string[];
     title?: string;
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
-    type: ArticleBlockType.IMAGE,
+    type: ArticleBlockType.IMAGE;
     src: string;
     title: string;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-    type: ArticleBlockType.CODE
+    type: ArticleBlockType.CODE;
     code: string;
 }
 
-export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
+export type ArticleBlock =
+    | ArticleCodeBlock
+    | ArticleImageBlock
+    | ArticleTextBlock;
 
 export enum ArticleType {
     IT = 'IT',
     SCIENECE = 'SCIENECE',
-    ECONOMICS = 'ECONOMICS'
+    ECONOMICS = 'ECONOMICS',
 }
 
 export enum ArticleView {
     BIG = 'BIG',
-    SMALL = 'SMALL'
+    SMALL = 'SMALL',
 }
 
 export interface Article {
@@ -50,5 +53,5 @@ export interface Article {
     views: number;
     createdAt: string;
     type: ArticleType[];
-    blocks: ArticleBlock[]
+    blocks: ArticleBlock[];
 }

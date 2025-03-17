@@ -8,7 +8,7 @@ import ArticleDetailPage from 'pages/ArticleDetailsPage/ui/ArticleDetailPage/Art
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
-}
+};
 
 export enum AppRoutes {
     MAIN = 'main',

@@ -1,27 +1,23 @@
-﻿import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, useCallback } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Text } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Article/Comment';
+import { AddCommentForm } from 'features/AddCommentForm';
+import { sendCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
+import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentByArticleId/fetchCommentByArticleId';
+import { memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { classNames } from 'shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchCommentsByArticleId }
-    from 'pages/ArticleDetailsPage/model/services/fetchCommentByArticleId/fetchCommentByArticleId';
-import { AddCommentForm } from 'features/AddCommentForm';
-import { addCommentFormActions } from 'features/AddCommentForm/model/slice/addComentFormSlice';
-import { sendCommentForArticle }
-    from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-import { text } from 'stream/consumers';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Page } from 'shared/ui/Page/Page';
+import { Text } from 'shared/ui/Text/Text';
+import { Page } from 'widgets/Page/Page';
 import {
     getArticleCommensError,
     getArticleCommentsIsLoading,
@@ -53,9 +49,12 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
         navigate(RoutePath.articles);
     }, [navigate]);
 
-    const onSendComment = useCallback((text: string) => {
-        dispatch(sendCommentForArticle(text));
-    }, [dispatch]);
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(sendCommentForArticle(text));
+        },
+        [dispatch],
+    );
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -70,7 +69,9 @@ const ArticleDetailPage = (props: ArticleDetailPageProps) => {
     }
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <Page className={classNames(cls.ArticleDetailPage, {}, [className])}>
+            <Page
+                className={classNames(cls.ArticleDetailPage, {}, [className])}
+            >
                 <Button onClick={onBackToList} theme={ButtonTheme.OUTLINE}>
                     {t('Назад к списку')}
                 </Button>

@@ -1,4 +1,4 @@
-﻿import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -22,7 +22,7 @@ import cls from './AddCommentForm.module.scss';
 
 interface AddCommentFormProps {
     className?: string;
-    onSendComment: (text: string) => void
+    onSendComment: (text: string) => void;
 }
 
 const reducers: ReducersList = {

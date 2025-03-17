@@ -11,15 +11,15 @@ import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { AddCommentFormShema } from 'features/AddCommentForm';
 import { LoginSchema } from 'features/AuthByUsername';
-import { To } from 'history';
+import { UIShema } from 'features/UI/model/types/UIShema';
 import { ArticleDetailsCommentsShema } from 'pages/ArticleDetailsPage';
 import { ArticlesPageShema } from 'pages/ArticlesPage';
-import { NavigateOptions } from 'react-router';
 import { CombinedState } from 'redux';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
+    ui: UIShema;
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema;
@@ -37,11 +37,11 @@ export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>;
     reduce: (
         state: StateSchema,
-        action: AnyAction
+        action: AnyAction,
     ) => CombinedState<StateSchema>;
     add: (key: StateSchemaKey, reducer: Reducer) => void;
     remove: (key: StateSchemaKey) => void;
-    getMountedReducers:() => MountedReducers;
+    getMountedReducers: () => MountedReducers;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {

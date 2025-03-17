@@ -1,4 +1,4 @@
-﻿import { Comments } from 'entities/Article/Comment/model/types/comments';
+import { Comments } from 'entities/Article/Comment/model/types/comments';
 import {
     createEntityAdapter,
     createSlice,
@@ -46,4 +46,5 @@ const articleDetailsCommentSlice = createSlice({
     },
 });
 
-export const { reducer: articleDetailsCommentsReducer } = articleDetailsCommentSlice;
+export const { reducer: articleDetailsCommentsReducer } =
+    articleDetailsCommentSlice;

@@ -8,13 +8,17 @@ import { getUserAuthData } from 'entities/User';
 const AppRouter = () => {
     const isAuth = useSelector(getUserAuthData);
 
-    const routes = useMemo(() => Object.values(routeConfig).filter((route) => {
-        if (route.authOnly && !isAuth) {
-            return false;
-        }
+    const routes = useMemo(
+        () =>
+            Object.values(routeConfig).filter((route) => {
+                if (route.authOnly && !isAuth) {
+                    return false;
+                }
 
-        return true;
-    }), [isAuth]);
+                return true;
+            }),
+        [isAuth],
+    );
 
     return (
         <Routes>
@@ -22,11 +26,9 @@ const AppRouter = () => {
                 <Route
                     key={path}
                     path={path}
-                    element={(
-                        <Suspense fallback={<PageLoader />}>
-                            {element}
-                        </Suspense>
-                    )}
+                    element={
+                        <Suspense fallback={<PageLoader />}>{element}</Suspense>
+                    }
                 />
             ))}
         </Routes>

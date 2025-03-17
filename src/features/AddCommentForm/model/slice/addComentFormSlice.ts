@@ -1,4 +1,4 @@
-﻿import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AddCommentFormShema } from '../types/addCommentForm';
 
 const initialState: AddCommentFormShema = {

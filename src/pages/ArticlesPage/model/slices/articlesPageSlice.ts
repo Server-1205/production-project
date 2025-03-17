@@ -1,4 +1,4 @@
-﻿import {
+import {
     createEntityAdapter,
     createSlice,
     PayloadAction,
@@ -30,17 +30,19 @@ const articlesPageSlice = createSlice({
         _inited: false,
     }),
     reducers: {
-        setView: (state, action:PayloadAction<ArticleView>) => {
+        setView: (state, action: PayloadAction<ArticleView>) => {
             state.view = action.payload;
             localStorage.setItem(ARTICLE_VIWE_LOCALSTORAGE_VIEW, state.view);
         },
 
-        setPage: (state, action:PayloadAction<number>) => {
+        setPage: (state, action: PayloadAction<number>) => {
             state.page = action.payload;
         },
 
         initState: (state) => {
-            const view = localStorage.getItem(ARTICLE_VIWE_LOCALSTORAGE_VIEW) as ArticleView;
+            const view = localStorage.getItem(
+                ARTICLE_VIWE_LOCALSTORAGE_VIEW,
+            ) as ArticleView;
             state.view = view;
             state.limit = view === ArticleView.BIG ? 4 : 9;
             state._inited = true;
@@ -68,7 +70,5 @@ const articlesPageSlice = createSlice({
     },
 });
 
-export const {
-    reducer: articlesPageReducer,
-    actions: articlesPageActions,
-} = articlesPageSlice;
+export const { reducer: articlesPageReducer, actions: articlesPageActions } =
+    articlesPageSlice;
