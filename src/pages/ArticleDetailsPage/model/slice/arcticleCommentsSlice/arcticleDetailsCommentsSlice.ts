@@ -1,9 +1,5 @@
 import { Comments } from 'entities/Article/Comment/model/types/comments';
-import {
-    createEntityAdapter,
-    createSlice,
-    PayloadAction,
-} from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ArticleDetailsCommentsShema } from '../../types/ArticleDetailsComentShema';
 import { fetchCommentsByArticleId } from '../../services/fetchCommentByArticleId/fetchCommentByArticleId';
@@ -46,5 +42,4 @@ const articleDetailsCommentSlice = createSlice({
     },
 });
 
-export const { reducer: articleDetailsCommentsReducer } =
-    articleDetailsCommentSlice;
+export const { reducer: articleDetailsCommentsReducer } = articleDetailsCommentSlice;

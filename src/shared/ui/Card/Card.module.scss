@@ -3,3 +3,11 @@
     border-radius: 12px;
     border: 1px solid;
 }
+
+.normal {
+    background: var(--bg-color);
+}
+
+.outlined {
+    border: 1px solid var(--primary-color);
+}

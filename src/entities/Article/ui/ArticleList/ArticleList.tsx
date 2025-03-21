@@ -1,9 +1,10 @@
+import { Article, ArticleView } from 'entities/Article/model/types/article';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Article, ArticleView } from 'entities/Article/model/types/article';
-import cls from './ArticleList.module.scss';
+import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import cls from './ArticleList.module.scss';
 
 interface ArticleListProps {
     articles: Article[];
@@ -25,6 +26,16 @@ export const ArticleList = (props: ArticleListProps) => {
     const renderArticle = (article: Article) => (
         <ArticleListItem article={article} view={view} key={article.id} />
     );
+
+    if (!isLoading && !articles.length) {
+        return (
+            <Text
+                size={TextSize.L}
+                theme={TextTheme.ERROR}
+                title={t('Статьи не найдены')}
+            />
+        );
+    }
 
     return (
         <div
